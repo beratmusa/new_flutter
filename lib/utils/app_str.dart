@@ -13,5 +13,5 @@ class AppStr {
   static const String addTaskString = "Add Task";
   static const String updateTaskString = "Update Task";
   static const String oopsMsg = "Oops!";
-  static const String areYouSure = "Are You Sure?";
+  static const String areYouSure = "Emin Misin?";
 }

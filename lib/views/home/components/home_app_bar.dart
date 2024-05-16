@@ -66,7 +66,9 @@ class _HomeAppBarState extends State<HomeAppBar>
             Padding(
               padding: const EdgeInsets.only(right: 20),
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // deleteAtTask(context);
+                  },
                   icon: const Icon(
                     CupertinoIcons.trash_fill,
                     size: 40,

@@ -1,8 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:new_flutter/data/hive_data_store.dart';
+import 'package:new_flutter/models/task.dart';
 import 'package:new_flutter/views/home/home_view.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  // init hive db before app
+  await Hive.initFlutter();
+
+  Hive.registerAdapter<Task>(TaskAdapter());
+
+  var box = await Hive.openBox<Task>(HiveDataStore.boxName);
+
+  box.values.forEach((task) {
+    if (task.createdAtTime.day != DateTime.now().day) {
+      task.delete();
+    } else {}
+  });
+
+  runApp(BaseWidget(child: const MyApp()));
+}
+
+class BaseWidget extends InheritedWidget {
+  BaseWidget({Key? key, required this.child}) : super(key: key, child: child);
+  final HiveDataStore dataStore = HiveDataStore();
+  final Widget child;
+
+  static BaseWidget of(BuildContext context) {
+    final base = context.dependOnInheritedWidgetOfExactType<BaseWidget>();
+    if (base != null) {
+      return base;
+    } else {
+      throw StateError("message");
+    }
+  }
+
+  @override
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
+    throw UnimplementedError();
+  }
 }
 
 class MyApp extends StatelessWidget {

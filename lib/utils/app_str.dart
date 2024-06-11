@@ -3,7 +3,7 @@ class AppStr {
   static const String deletedTask = "This task was deleted";
   static const String doneAllTask = "Tüm Görevleri Tamamladınız!👌";
   static const String addNewTask = "Yeni Görev Ekle";
-  static const String updateCurrentTask = "Update ";
+  static const String updateCurrentTask = "Güncelle ";
   static const String taskString = "Ekle";
   static const String titleOfTitleTextField = "Ne planlıyorsun😇?";
   static const String addNote = 'Not Ekle';

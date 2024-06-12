@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:new_flutter/extensions/space_exs.dart';
 import 'package:new_flutter/utils/app_colors.dart';
+import 'package:new_flutter/views/home/about_view.dart';
+import 'package:new_flutter/views/home/home_view.dart';
+import 'package:new_flutter/views/home/profile_view.dart';
+import 'package:new_flutter/views/home/setting_view.dart';
 
 class CustomDrawer extends StatelessWidget {
   CustomDrawer({super.key});
@@ -55,7 +59,37 @@ class CustomDrawer extends StatelessWidget {
               itemCount: icons.length,
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    // Sayfa yönlendirme
+                    switch (index) {
+                      case 0:
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeView()),
+                        );
+                        break;
+                      case 1:
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProfileView()),
+                        );
+                        break;
+                      case 2:
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SettingView()),
+                        );
+                        break;
+                      case 3:
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AboutView()),
+                        );
+                        break;
+                    }
+                  },
                   child: Container(
                     margin: const EdgeInsets.all(3),
                     child: ListTile(
